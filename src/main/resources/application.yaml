@@ -1,0 +1,51 @@
+server:
+  port: 8080
+
+spring:
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changelog/db.changelog-master.yaml
+  datasource:
+    username: postgres
+    password: 11111111
+    url: jdbc:postgresql://localhost:5432/search_engine
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+
+# example values
+
+indexing-settings:
+  sites:
+    - url: https://cardiochel.ru
+      name: Кардиочел
+#    - url: https://www.lenta11.ru
+#      name: Лента.ру
+    - url: https://www.skillbox.ru
+      name: Skillbox
+#    - url: https://www.playback.ru
+#      name: PlayBack.Ru
+#    - url: https://74.ru
+#      name: 74.ru
+
+connection-parameters:
+    userAgent: SearchEngine
+    referrer: http://www.google.com
+
+hibernate-configuration:
+  session-factory:
+    connection:
+      driver_class: org.postgresql.Driver
+      url: jdbc:postgresql://localhost:5432/search_engine
+      username: postgres
+      password: 11111111
+      pool_size: 10
+    dialect: org.hibernate.dialect.PostgreSQLDialect
+    show_sql: true
+    current_session_context_class: thread
+    hbm2ddl:
+      auto: validate
