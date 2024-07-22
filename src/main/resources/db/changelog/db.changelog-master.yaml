@@ -1,0 +1,123 @@
+databaseChangeLog:
+  - logicalFilePath: db/changelog/db.changelog-master.yaml
+  - changeSet:
+      id: 1
+      author: irina
+      changes:
+        - createTable:
+            tableName: sites
+            columns:
+              - column:
+                  name: id
+                  type: bigserial
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: status
+                  type: varchar(10)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: status_time
+                  type: timestamp
+                  constraints:
+                    nullable: false
+              - column:
+                  name: last_error
+                  type: text
+              - column:
+                  name: url
+                  type: varchar(250)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(250)
+                  constraints:
+                    nullable: false
+        - createTable:
+            tableName: pages
+            columns:
+              - column:
+                  name: id
+                  type: bigserial
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: site_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: path
+                  type: text
+                  constraints:
+                    nullable: false
+              - column:
+                  name: code
+                  type: integer
+                  constraints:
+                    nullable: false
+              - column:
+                  name: content
+                  type: text
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: 2
+      author: irina
+      changes:
+        - createTable:
+            tableName: lemmas
+            columns:
+              - column:
+                  name: id
+                  type: bigserial
+                  autoIncrement: true
+                  constraints:
+                    primary key: true
+                    nullable: false
+              - column:
+                  name: site_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: lemma
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: frequency
+                  type: integer
+                  constraints:
+                    nullable: false
+        - createTable:
+            tableName: indexes
+            columns:
+              - column:
+                  name: id
+                  type: bigserial
+                  autoIncrement: true
+                  constraints:
+                    primary key: true
+                    nullable: false
+              - column:
+                  name: page_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: lemma_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: rank
+                  type: double precision
+                  constraints:
+                    nullable: false
