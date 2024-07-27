@@ -36,16 +36,3 @@ connection-parameters:
     userAgent: SearchEngine
     referrer: http://www.google.com
 
-hibernate-configuration:
-  session-factory:
-    connection:
-      driver_class: org.postgresql.Driver
-      url: jdbc:postgresql://localhost:5432/search_engine
-      username: postgres
-      password: 11111111
-      pool_size: 10
-    dialect: org.hibernate.dialect.PostgreSQLDialect
-    show_sql: true
-    current_session_context_class: thread
-    hbm2ddl:
-      auto: validate
